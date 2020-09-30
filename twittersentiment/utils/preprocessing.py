@@ -6,7 +6,10 @@ import torch
 import pickle
 from tqdm import tqdm
 import os
+import nltk
 from nltk.tokenize import word_tokenize
+
+nltk.download("all")
 
 MAX_LEN = 80
 

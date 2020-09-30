@@ -1,6 +1,7 @@
 import torch
 from torch.utils.data import Dataset
-from twittersentiment.twittersentiment import DEVICE
+
+DEVICE = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 
 
 class TweetDataset(Dataset):
