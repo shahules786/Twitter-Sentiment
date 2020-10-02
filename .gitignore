@@ -5,7 +5,7 @@ __pycache__/
 
 # C extensions
 *.so
-
+.vector_cache/
 # Distribution / packaging
 .Python
 build/
