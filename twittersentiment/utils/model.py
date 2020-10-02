@@ -1,5 +1,5 @@
-from torch import nn
 import torch
+from torch import nn
 import torch.nn.functional as F
 
 
@@ -7,6 +7,7 @@ class TwitterModel(nn.Module):
     """
     Model Architecture
     """
+
     def __init__(self, embedding_matrix, lstm_hidden_size=128, gru_hidden_size=64):
 
         super(TwitterModel, self).__init__()
@@ -21,11 +22,13 @@ class TwitterModel(nn.Module):
         self.Linear1 = nn.Linear(gru_hidden_size * 4, 1)
 
     def apply_spatial_dropout(self, h_embedding):
+
         h_embedding = h_embedding.transpose(1, 2).unsqueeze(2)
         h_embedding = self.embedding_dropout(h_embedding).squeeze(2).transpose(1, 2)
         return h_embedding
 
     def flatten_parameters(self):
+
         self.lstm.flatten_parameters()
         self.lstm2.flatten_parameters()
 
