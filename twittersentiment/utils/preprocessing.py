@@ -9,7 +9,7 @@ import nltk
 import logging
 
 
-logging.basicConfig(format='%(message)s',level=logging.INFO)
+logging.basicConfig(format="%(message)s", level=logging.INFO)
 MAX_LEN = 80
 
 
@@ -57,13 +57,13 @@ class Preprocess:
 
         return tweet_pad, word_index, path
 
-    def prepare_matrix(word_index):
+    def prepare_matrix(word_index, name, dim):
 
         """
         word_index : tokenizer word index
         name : name of embedding vector
         available vectors
-        
+
                 charngram.100d
                 fasttext.en.300d
                 fasttext.simple.300d
@@ -87,7 +87,7 @@ class Preprocess:
         num_words = len(word_index)
         embedding_matrix = np.zeros((num_words + 1, dim))
 
-        for word, i in (word_index.items()):
+        for word, i in word_index.items():
             if i > num_words:
                 continue
 
