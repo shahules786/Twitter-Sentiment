@@ -4,17 +4,20 @@ import logging
 import pandas as pd
 import numpy as np
 from tqdm import tqdm
+
 from collections import namedtuple
 from torch.utils import model_zoo
-from twittersentiment.utils.model import TwitterModel as Model
-from sklearn.model_selection import train_test_split
 from sklearn.utils import check_array
 from torch.utils.data import DataLoader
+from sklearn.model_selection import train_test_split
+
+
+from twittersentiment.utils.model import TwitterModel as Model
 from twittersentiment.utils.model import TwitterModel
 from twittersentiment.utils.preprocessing import Preprocess
 from twittersentiment.utils.data import TweetDataset
 
-logging.basicConfig(format='%(message)s',level=logging.INFO)
+logging.basicConfig(format="%(message)s", level=logging.INFO)
 
 
 SEED = 2020
@@ -41,13 +44,14 @@ class Sentiment:
 
     def load_pretrained(self, model_name="twitter-en"):
 
-        state_dict = torch.hub.load_state_dict_from_url(self.models[model_name].url, progress=True, map_location=DEVICE)
-        #state_dict = torch.load("/home/shahul/Downloads/classifier.pt", map_location=DEVICE)
+        state_dict = torch.hub.load_state_dict_from_url(
+            self.models[model_name].url, progress=True, map_location=DEVICE
+        )
+        # state_dict = torch.load("/home/shahul/Downloads/classifier.pt", map_location=DEVICE)
         self.model = self.models[model_name].model(state_dict["embedding.weight"].numpy())
         self.model.load_state_dict(state_dict)
 
-    def train(self, X, y, epochs=5, lr=1e-3, batch_size=32,test_size=0.15,name="27B",dim=200, path: str):
-
+    def train(self, X, y, path, epochs=5, lr=1e-3, batch_size=32, test_size=0.15, name="twitter.27B", dim=50):
 
         """
 
@@ -68,12 +72,12 @@ class Sentiment:
         if X.shape[0] != y.shape[0]:
             raise ValueError("X and y should have same number of samples")
 
-        if not y.unique()==np.array([0,1]):
+        if not np.array_equal(np.unique(y), [0, 1]):
             raise ValueError("target should be binary")
 
         corpus = Preprocess.preprocess_text(X)
-        padded_tweets, word_index, self.tokenizer_path = Preprocess.tokenizer(corpus,path,mode="train")
-        embedding_matrix = Preprocess.prepare_matrix(word_index,name,dim)
+        padded_tweets, word_index, self.tokenizer_path = Preprocess.tokenizer(corpus, path, mode="train")
+        embedding_matrix = Preprocess.prepare_matrix(word_index, name, dim)
 
         X_train, X_test, y_train, y_test = train_test_split(padded_tweets, y.values, test_size=test_size)
 
@@ -132,7 +136,6 @@ class Sentiment:
                 logging.info("saving model...")
                 best_loss = epoch_loss
 
-
             torch.save(model.state_dict(), os.path.join(path, "best_model.pt"))
 
         self.model = model.eval()
@@ -155,13 +158,13 @@ class Sentiment:
         corpus = Preprocess.preprocess_text(X)
         padded_tweets, _w, _t = Preprocess.tokenizer(corpus, self.tokenizer_path, "test")
 
-        dataloader = DataLoader(TweetDataset(padded_tweets,mode="test"),batch_size=32,shuffle=False)
+        dataloader = DataLoader(TweetDataset(padded_tweets, mode="test"), batch_size=32, shuffle=False)
         predictions = []
-        for tweet,y in dataloader:
+        for tweet, y in dataloader:
             with torch.no_grad():
 
                 prediction = self.model(tweet)
 
             predictions.append(prediction)
 
-        return torch.cat(predictions,dim=0).cpu().numpy().squeeze()
+        return torch.cat(predictions, dim=0).cpu().numpy().squeeze()
