@@ -5,6 +5,12 @@ DEVICE = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 
 
 class TweetDataset(Dataset):
+
+    """
+    
+    Twitter dataset
+
+    """
     def __init__(self, train, targets=None, mode="train"):
 
         self.train = train

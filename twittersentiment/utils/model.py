@@ -4,6 +4,9 @@ import torch.nn.functional as F
 
 
 class TwitterModel(nn.Module):
+    """
+    Model Architecture
+    """
     def __init__(self, embedding_matrix, lstm_hidden_size=128, gru_hidden_size=64):
 
         super(TwitterModel, self).__init__()
