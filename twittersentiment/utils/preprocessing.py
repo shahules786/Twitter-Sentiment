@@ -34,6 +34,8 @@ class Preprocess:
 
         """
 
+        path = os.path.join(path, "new_tokenizer.pickle")
+
         if mode == "train":
             tokenizer_obj = Tokenizer()
             tokenizer_obj.fit_on_texts(corpus)
@@ -42,7 +44,6 @@ class Preprocess:
             if not os.path.exists(path):
                 os.mkdir(path)
 
-            path = os.path.join(path, "new_tokenizer.pickle")
             with open(path, "wb") as tok:
                 pickle.dump(tokenizer_obj, tok, protocol=pickle.HIGHEST_PROTOCOL)
 

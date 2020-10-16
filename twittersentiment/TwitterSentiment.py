@@ -40,7 +40,7 @@ class Sentiment:
             )
         }
 
-        self.tokenizer_path = "/home/shahul/Downloads/tokenizer.pickle"
+        self.tokenizer_path = os.path.split(os.__file__)[0]
 
     def load_pretrained(self, model_name="twitter-en"):
 
