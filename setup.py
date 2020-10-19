@@ -1,7 +1,8 @@
 import os
 import setuptools
 
-current_dir = os.path.abspath(os.path.dirname(__file__))
+current_dir = os.path.dirname(os.path.abspath("__file__"))
+
 
 ## requirements
 with open(os.path.join(current_dir, "README.md"), "r") as fh:
