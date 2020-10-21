@@ -1,5 +1,4 @@
 import os
-import pathlib
 import setuptools
 
 current_dir = os.path.dirname(os.path.abspath("__file__"))
@@ -19,7 +18,7 @@ except FileNotFoundError:
 
 setuptools.setup(
     name="twittersentiment",  # Replace with your own username
-    version="0.0.2",
+    version="0.0.3",
     author="Shahul ES",
     author_email="shahules786@gmail.com",
     description="A python package for sentiment analysis written using pytorch framework",
