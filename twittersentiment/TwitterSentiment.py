@@ -34,7 +34,7 @@ class Sentiment:
 
         self.models = {
             "twitter-en": model(
-                url="/home/shahul/Downloads/classifier(1).pt",
+                url="https://github.com/shahules786/Twitter-Sentiment/releases/download/v1.0/classifer_model.pt",
                 model=TweetModel,
             )
         }
@@ -45,10 +45,10 @@ class Sentiment:
 
     def load_pretrained(self, model_name="twitter-en"):
 
-        # state_dict = torch.hub.load_state_dict_from_url(
-        #    self.models[model_name].url, progress=True, map_location=DEVICE
-        # )
-        state_dict = torch.load("/home/shahul/Downloads/classifier (1).pt", map_location=DEVICE)
+        state_dict = torch.hub.load_state_dict_from_url(
+            self.models[model_name].url, progress=True, map_location=DEVICE
+        )
+        # state_dict = torch.load("/home/shahul/Downloads/classifier (1).pt", map_location=DEVICE)
         self.model = self.models[model_name].model(state_dict["embedding.weight"].numpy())
         self.model.load_state_dict(state_dict)
 
