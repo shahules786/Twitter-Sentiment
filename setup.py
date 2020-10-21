@@ -17,7 +17,7 @@ except FileNotFoundError:
     required = []
 
 setuptools.setup(
-    name="shahules786",  # Replace with your own username
+    name="twittersentiment",  # Replace with your own username
     version="0.0.1",
     author="Shahul ES",
     author_email="shahules786@gmail.com",
