@@ -34,7 +34,8 @@ class Preprocess:
 
         """
 
-        path = os.path.join(path, "new_tokenizer.pickle")
+        if not path.endswith(".pickle"):
+            path = os.path.join(path, "tokenizer.pickle")
 
         if mode == "train":
             tokenizer_obj = Tokenizer()
