@@ -1,12 +1,12 @@
 import os
+import pathlib
 import setuptools
 
 current_dir = os.path.dirname(os.path.abspath("__file__"))
 
 
 ## requirements
-with open(os.path.join(current_dir, "README.md"), "r") as fh:
-    long_description = fh.read()
+README = (current_dir / "README.md").read_text()
 
 
 # What packages are required for this module to be executed?
@@ -22,7 +22,7 @@ setuptools.setup(
     author="Shahul ES",
     author_email="shahules786@gmail.com",
     description="A python package for sentiment analysis written using pytorch framework",
-    long_description_content_type=long_description,
+    long_description_content_type=README,
     url="https://github.com/shahules786/Twitter-Sentiment",
     packages=setuptools.find_packages(),
     classifiers=[
