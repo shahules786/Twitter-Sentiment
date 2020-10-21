@@ -32,4 +32,6 @@ Simply put, a Tweet is a message sent on Twitter. Most of the tweets do not foll
 ![basic](https://user-images.githubusercontent.com/25312635/96710969-71dbb100-13ba-11eb-9756-651384688a8b.gif)
 
 
-- You can also train your own mode with custom dataset and your choice of word embedding, see examples
+- You can also train your own mode with custom dataset and your choice of word embedding, see [examples](https://github.com/shahules786/Twitter-Sentiment/blob/master/examples/basic.ipynb)
+
+
