@@ -1,3 +1,8 @@
+[![](https://img.shields.io/github/issues/shahules786/Twitter-Sentiment)]()
+[![](https://img.shields.io/github/license/shahules786/Twitter-Sentiment)]()
+[![](https://img.shields.io/github/stars/shahules786/Twitter-Sentiment)]()
+
+
 # Twitter Sentiment analyzer
 
 
@@ -17,4 +22,14 @@ Sentiment analysis is the task of determining the sentiment of a given expressio
 
 Simply put, a Tweet is a message sent on Twitter. Most of the tweets do not follow normal English grammar and vocabulary mainly due to the limitation of the number of characters allowed in a tweet. This requires special care to yield better performance, hence this project.
 
+## Install
+`!pip install twittersentiment`
 
+## Examples
+
+- Using pretrained model
+
+![basic](https://user-images.githubusercontent.com/25312635/96710969-71dbb100-13ba-11eb-9756-651384688a8b.gif)
+
+
+- You can also train your own mode with custom dataset and your choice of word embedding, see examples
