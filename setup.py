@@ -23,7 +23,8 @@ setuptools.setup(
     author="Shahul ES",
     author_email="shahules786@gmail.com",
     description="A python package for sentiment analysis written using pytorch framework",
-    long_description_content_type=long_description,
+    long_description_content_type="text/markdown",
+    long_description=long_description,
     url="https://github.com/shahules786/Twitter-Sentiment",
     packages=setuptools.find_packages(),
     classifiers=[
