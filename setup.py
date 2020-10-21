@@ -19,7 +19,7 @@ except FileNotFoundError:
 
 setuptools.setup(
     name="twittersentiment",  # Replace with your own username
-    version="0.0.1",
+    version="0.0.2",
     author="Shahul ES",
     author_email="shahules786@gmail.com",
     description="A python package for sentiment analysis written using pytorch framework",
