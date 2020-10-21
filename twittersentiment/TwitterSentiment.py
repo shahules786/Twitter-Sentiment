@@ -12,8 +12,7 @@ from torch.utils.data import DataLoader
 from sklearn.model_selection import train_test_split
 
 
-from twittersentiment.utils.model import TwitterModel as Model
-from twittersentiment.utils.model import TwitterModel
+from twittersentiment.utils.model import TweetModel
 from twittersentiment.utils.preprocessing import Preprocess
 from twittersentiment.utils.data import TweetDataset
 
@@ -35,19 +34,21 @@ class Sentiment:
 
         self.models = {
             "twitter-en": model(
-                url="https://github.com/shahules786/ML_EXP/releases/download/sample/best_model.pt",
-                model=Model,
+                url="/home/shahul/Downloads/classifier(1).pt",
+                model=TweetModel,
             )
         }
 
-        self.tokenizer_path = os.path.split(os.__file__)[0]
+        self.tokenizer_path = os.path.join(
+            os.path.dirname(os.path.abspath("__file__")), "twittersentiment", "utils", "tokenizer.pickle"
+        )
 
     def load_pretrained(self, model_name="twitter-en"):
 
-        state_dict = torch.hub.load_state_dict_from_url(
-            self.models[model_name].url, progress=True, map_location=DEVICE
-        )
-        # state_dict = torch.load("/home/shahul/Downloads/classifier.pt", map_location=DEVICE)
+        # state_dict = torch.hub.load_state_dict_from_url(
+        #    self.models[model_name].url, progress=True, map_location=DEVICE
+        # )
+        state_dict = torch.load("/home/shahul/Downloads/classifier (1).pt", map_location=DEVICE)
         self.model = self.models[model_name].model(state_dict["embedding.weight"].numpy())
         self.model.load_state_dict(state_dict)
 
@@ -89,7 +90,7 @@ class Sentiment:
             "valid": DataLoader(test_data, batch_size=batch_size, shuffle=False),
         }
 
-        model = TwitterModel(embedding_matrix).to(DEVICE)
+        model = TweetModel(embedding_matrix).to(DEVICE)
         loss_fn = torch.nn.BCELoss().cuda()
         optimizer = torch.optim.Adam(model.parameters())
 
