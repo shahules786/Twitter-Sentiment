@@ -22,6 +22,9 @@ Sentiment analysis is the task of determining the sentiment of a given expressio
 
 Simply put, a Tweet is a message sent on Twitter. Most of the tweets do not follow normal English grammar and vocabulary mainly due to the limitation of the number of characters allowed in a tweet. This requires special care to yield better performance, hence this project.
 
+## Install
+`!pip install twittersentiment`
+
 ## Examples
 
 - Using pretrained model
