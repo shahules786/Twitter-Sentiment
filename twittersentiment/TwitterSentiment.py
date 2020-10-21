@@ -5,13 +5,14 @@ import pandas as pd
 import numpy as np
 from tqdm import tqdm
 
+
 from collections import namedtuple
 from torch.utils import model_zoo
 from sklearn.utils import check_array
 from torch.utils.data import DataLoader
 from sklearn.model_selection import train_test_split
 
-
+import twittersentiment
 from twittersentiment.utils.model import TweetModel
 from twittersentiment.utils.preprocessing import Preprocess
 from twittersentiment.utils.data import TweetDataset
@@ -40,7 +41,7 @@ class Sentiment:
         }
 
         self.tokenizer_path = os.path.join(
-            os.path.dirname(os.path.abspath("__file__")), "twittersentiment", "utils", "tokenizer.pickle"
+            os.path.dirname(os.path.abspath(twittersentiment.__file__)), "utils", "tokenizer.pickle"
         )
 
     def load_pretrained(self, model_name="twitter-en"):
