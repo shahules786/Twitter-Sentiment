@@ -54,6 +54,6 @@ sent.train("hey you just trained a custom model")
 
 
 
- see [examples] for more.(https://github.com/shahules786/Twitter-Sentiment/blob/master/examples/basic.ipynb)
+ see [examples](https://github.com/shahules786/Twitter-Sentiment/blob/master/examples/basic.ipynb) for more.
 
 
