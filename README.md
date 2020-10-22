@@ -39,7 +39,7 @@ sent.predict("hey how are you?")
 ![basic](https://user-images.githubusercontent.com/25312635/96710969-71dbb100-13ba-11eb-9756-651384688a8b.gif)
 
 
-- You can also train your own mode with custom dataset and your choice of word embedding,
+- **You can train your own model with custom dataset and your choice of word embedding**
 
 
 ```python
@@ -54,6 +54,6 @@ sent.train("hey you just trained a custom model")
 
 
 
- see [examples](https://github.com/shahules786/Twitter-Sentiment/blob/master/examples/basic.ipynb)
+ see [examples] for more.(https://github.com/shahules786/Twitter-Sentiment/blob/master/examples/basic.ipynb)
 
 
