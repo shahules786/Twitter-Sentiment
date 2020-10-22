@@ -27,11 +27,33 @@ Simply put, a Tweet is a message sent on Twitter. Most of the tweets do not foll
 
 ## Examples
 
-- Using pretrained model
+- **Using pretrained model**
+
+```python
+from twittersentiment import TwitterSentiment
+sent = TwitterSentiment.Sentiment()
+sent.load_pretrained()
+sent.predict("hey how are you?")
+```
 
 ![basic](https://user-images.githubusercontent.com/25312635/96710969-71dbb100-13ba-11eb-9756-651384688a8b.gif)
 
 
-- You can also train your own mode with custom dataset and your choice of word embedding, see [examples](https://github.com/shahules786/Twitter-Sentiment/blob/master/examples/basic.ipynb)
+- You can also train your own mode with custom dataset and your choice of word embedding,
+
+
+```python
+from twittersentiment import TwitterSentiment
+import pandas as pd
+df = pd.read_csv("your_dataset.csv")
+sent = TwitterSentiment.Sentiment()
+sent.train(df["text"],df["target"],path="/your_model_save_path",name="6B",dim=100)
+sent.train("hey you just trained a custom model")
+
+```
+
+
+
+ see [examples](https://github.com/shahules786/Twitter-Sentiment/blob/master/examples/basic.ipynb)
 
 
